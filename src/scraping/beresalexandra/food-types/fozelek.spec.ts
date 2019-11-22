@@ -1,5 +1,5 @@
-import {loadBeresAlexandraBody} from 'src/scraping/beresalexandra/utils/test-utils';
-import {fozelekSelectorsForTheWeek, fozelekDishes} from './fozelek';
+import {loadBeresAlexandraBody} from 'src/scraping/beresalexandra/utils/test-utils'
+import {fozelekSelectorsForTheWeek, fozelekDishes} from './fozelek'
 
 
 describe('fozelek', () => {

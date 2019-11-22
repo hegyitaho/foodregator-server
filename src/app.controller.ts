@@ -1,12 +1,13 @@
-import {Controller, Get} from '@nestjs/common';
-import {AppService} from './app.service';
+import {Controller, Get} from '@nestjs/common'
+import {AppService} from './app.service'
+import {FoodData} from './scraping/beresalexandra/utils/FoodData'
 
-@Controller()
+@Controller('beresalexandra')
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  async getHello(): Promise<FoodData[]> {
+    return await this.appService.beresAlexandraFoodDataForWeek()
   }
 }

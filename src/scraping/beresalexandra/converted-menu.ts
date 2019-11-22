@@ -1,35 +1,34 @@
-import * as R from 'ramda';
+import * as R from 'ramda'
 import cheerio from 'cheerio'
+import fetch from 'node-fetch'
 
-import {FoodType, startOfWeek, getTextForFoodTypeForWeek, convertToFoodData} from './utils/conversion';
-import {FoodData} from './utils/FoodData';
-import {fozelekSelectorsForTheWeek} from './food-types/fozelek';
-import {mainCourseSelectorsForTheWeek} from './food-types/main-course';
+import {FoodType, startOfWeek, getTextForFoodTypeForWeek, convertToFoodData} from './utils/conversion'
+import {FoodData} from './utils/FoodData'
+import {fozelekSelectorsForTheWeek} from './food-types/fozelek'
+import {mainCourseSelectorsForTheWeek} from './food-types/main-course'
 
 
 export function loadSite(body: string | Buffer): CheerioStatic {
   return cheerio.load(body)
 }
 
-export async function getCurrentSiteMenu() {
-  return fetch('https://cors-anywhere.herokuapp.com/https://www.beresalexandra.hu/aktualis_etlap/nyomtatas')
-    .then(response => response.text())
+export async function getCurrentSiteMenu(content = rawSiteContent) {
+  return content()
     .then(loadSite)
     .then(menu)
-    .then(menu => menu.filter(Boolean))
 }
 
-export async function menu($) {
-  return [...fozelek($), ...mainCourse($)]
+export async function menu($: CheerioStatic) {
+  return [...fozelek($), ...mainCourse($)].filter(Boolean)
 }
 
 export function processRawTextOfFoodTypeForTheWeek($, selectors: string[][], type: FoodType): FoodData[] {
-  const addDaysToStartOfTheWeek = R.curry(addDaysToDate)(startOfWeek($));
+  const addDaysToStartOfTheWeek = R.curry(addDaysToDate)(startOfWeek($))
   return getTextForFoodTypeForWeek($, selectors)
     .map((dailyFoods, dayOfTheWeek) => 
       dailyFoods.map(dailyFood => 
         convertToFoodData(dailyFood, type, addDaysToStartOfTheWeek(dayOfTheWeek))))
-    .flat(Infinity);
+    .flat(Infinity)
 }
 
 export function fozelek($: CheerioStatic): FoodData[] {
@@ -40,8 +39,13 @@ export function mainCourse($: CheerioStatic): FoodData[] {
   return processRawTextOfFoodTypeForTheWeek($, mainCourseSelectorsForTheWeek(), FoodType.MainCourse)
 }
 
+function rawSiteContent() {
+  return fetch('https://www.beresalexandra.hu/aktualis_etlap/nyomtatas')
+    .then(res => res.text())
+}
+
 function addDaysToDate(date: Date, days: number): Date {
-  const nextDate = new Date(date.valueOf());
-  nextDate.setDate(date.getDate() + days);
-  return nextDate;
+  const nextDate = new Date(date.valueOf())
+  nextDate.setDate(date.getDate() + days)
+  return nextDate
 }

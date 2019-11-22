@@ -1,7 +1,8 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const {jsWithTs: tsjPreset} = require('ts-jest/presets');
 module.exports = {
   preset: 'ts-jest',
-  'roots': [
+  roots: [
     '<rootDir>/src/',
     '<rootDir>/test/',
     '<rootDir>/test-resources/',
@@ -9,7 +10,9 @@ module.exports = {
   'transform': {
     ...tsjPreset.transform,
   },
-  moduleFileExtensions: ["js", "json", "jsx", "ts", "tsx", "node"],
+  moduleFileExtensions: [
+    'js', 'json', 'jsx', 'ts', 'tsx', 'node',
+  ],
   moduleNameMapper: {
     '^src/(.*)$': '<rootDir>/src/$1',
     '^test/(.*)$': '<rootDir>/test/$1',

@@ -1,6 +1,6 @@
-import {loadBeresAlexandraBody} from 'src/scraping/beresalexandra/utils/test-utils';
-import {mainCourseSelectorsForTheWeek, mainCourseDishes} from './main-course';
-import * as R from 'ramda';
+import {loadBeresAlexandraBody} from 'src/scraping/beresalexandra/utils/test-utils'
+import {mainCourseSelectorsForTheWeek, mainCourseDishes} from './main-course'
+import * as R from 'ramda'
 
 describe('main course', () => {
   let $: CheerioStatic

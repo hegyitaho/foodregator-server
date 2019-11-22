@@ -1,8 +1,9 @@
-import {Injectable} from '@nestjs/common';
-
+import {Injectable} from '@nestjs/common'
+import {getCurrentSiteMenu} from 'src/scraping/beresalexandra/converted-menu'
+import {FoodData} from './scraping/beresalexandra/utils/FoodData'
 @Injectable()
 export class AppService {
-  getHello(): string {
-    return 'Hello World!';
+  async beresAlexandraFoodDataForWeek(): Promise<FoodData[]> {
+    return await getCurrentSiteMenu()
   }
 }

@@ -1,8 +1,8 @@
 import {
   startOfWeek, convertToFoodData, FoodType, getTextForFoodTypeForWeek,
 } from './conversion'
-import {fozelekSelectorsForTheWeek} from 'src/scraping/beresalexandra/food-types/fozelek';
-import {loadBeresAlexandraBody} from 'src/scraping/beresalexandra/utils/test-utils';
+import {fozelekSelectorsForTheWeek} from 'src/scraping/beresalexandra/food-types/fozelek'
+import {loadBeresAlexandraBody} from 'src/scraping/beresalexandra/utils/test-utils'
 
 describe('conversion utils', () => {
   let $: CheerioStatic
@@ -39,7 +39,7 @@ describe('conversion utils', () => {
         'Zöldbabfőzelék, rozmaringos pulykamell (311 kcal,19 g szénhidrát, 36 g fehérje, 9 g zsír) - 1050 Ft',
       ],
     ])
-  });
+  })
 
   test('convert text info to key value pairs', () => {
     expect(convertToFoodData('Zöldbabfőzelék, rozmaringos pulykamell (311 kcal,19 g szénhidrát, 36 g fehérje, 9 g zsír) - 1050 Ft', FoodType.Fozelek, new Date(2019, 4, 27)))

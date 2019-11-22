@@ -1,4 +1,4 @@
-import * as R from 'ramda';
+import * as R from 'ramda'
 import {getTextForFoodTypeForWeek} from 'src/scraping/beresalexandra/utils/conversion'
 
 export function mainCourseDishes($: CheerioStatic): string[][] {
