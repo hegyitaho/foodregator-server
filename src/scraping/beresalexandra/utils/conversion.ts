@@ -15,8 +15,8 @@ export function getTextForFoodTypeForWeek($: CheerioStatic, selectors: string[][
       $(selector)
         .text()
         .replace(/\s+/g, ' ')
-        .trim()
-    )
+        .trim(),
+    ),
   )
 }
 

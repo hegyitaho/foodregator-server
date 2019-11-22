@@ -7,6 +7,6 @@ export function fozelekDishes($: CheerioStatic): string[][] {
 
 export function fozelekSelectorsForTheWeek(): string[][] {
   return R.range(1,6).map((day: number) => 
-    R.range(1,3).map((subType: number) => `#menu_F${subType} > .menucol_${day}`)
+    R.range(1,3).map((subType: number) => `#menu_F${subType} > .menucol_${day}`),
   )
 }

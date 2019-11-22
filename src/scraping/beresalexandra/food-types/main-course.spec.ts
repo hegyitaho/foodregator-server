@@ -11,9 +11,9 @@ describe('main course', () => {
     expect(mainCourseSelectorsForTheWeek()).toEqual(
       R.range(1,6).map(day => 
         ['1A', '1B', '1C', '2A', '2B', '2C', '3A', '3B', 'HAL', 'NK'].map(menuSelectorSuffix => 
-          `#menu_${menuSelectorSuffix} > .menucol_${day}`
-        )
-      )
+          `#menu_${menuSelectorSuffix} > .menucol_${day}`,
+        ),
+      ),
     )
   })
 

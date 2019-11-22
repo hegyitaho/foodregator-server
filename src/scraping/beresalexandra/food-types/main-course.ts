@@ -7,7 +7,7 @@ export function mainCourseDishes($: CheerioStatic): string[][] {
 
 export function mainCourseSelectorsForTheWeek(): string[][] {
   return R.range(1,6).map((day: number) => 
-    rowSelectors().map((subType: string) => `#menu_${subType} > .menucol_${day}`)
+    rowSelectors().map((subType: string) => `#menu_${subType} > .menucol_${day}`),
   )
 }
 
