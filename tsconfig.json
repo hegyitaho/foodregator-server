@@ -1,40 +1,24 @@
 {
   "compilerOptions": {
-    "target": "es2019",
-    "lib": [
-      "es2019",
-      "esnext"
+     "lib": [
+      "es2019"
     ],
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es2019",
+    "sourceMap": true,
+    "outDir": "./dist",
     "baseUrl": "./",
+    "incremental": true,
     "paths": {
       "^src/(.*)$": ["./src/*"],
       "^test/(.*)$": ["./test/*"],
       "^test-resources/(.*)$": ["./test-resources/*"],
    },
-    "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "noEmit": true,
-    "noImplicitAny": false,
-    "noImplicitThis": true,
-    "strictNullChecks": false,
-    "sourceMap": true,
-    "jsx": "preserve",
-    "watch": true,
-    "strict": true,
-    "allowSyntheticDefaultImports": true,
-    "declaration": true,
-    "removeComments": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "outDir": "./dist",
-    "incremental": true
+   "esModuleInterop": true
   },
-  "include": [
-    "src",
-    "test"
-  ],
+  "exclude": ["node_modules", "dist"]
 }
